@@ -39,6 +39,26 @@
 		"subpatcher_template" : "snap_to_grid",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 675.0, 285.0, 135.0, 22.0 ],
+					"restore" : 					{
+						"button" : [ 0.0 ],
+						"button[1]" : [ 0.0 ],
+						"toggle" : [ 0 ],
+						"umenu[2]" : [ 3 ]
+					}
+,
+					"text" : "autopattr @autoname 1",
+					"varname" : "u649014505"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-19",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -68,7 +88,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 675.0, 165.0, 75.0, 22.0 ],
+					"patching_rect" : [ 675.0, 171.5, 75.0, 22.0 ],
 					"text" : "receive"
 				}
 
@@ -80,7 +100,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 240.0, 15.0, 70.0, 22.0 ],
+					"patching_rect" : [ 345.0, 0.0, 70.0, 22.0 ],
 					"text" : "loadmess 3"
 				}
 
@@ -154,7 +174,8 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 135.0, 330.0, 45.0, 45.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 0.0, 15.0, 45.0, 45.0 ]
+					"presentation_rect" : [ 0.0, 15.0, 45.0, 45.0 ],
+					"varname" : "toggle"
 				}
 
 			}
@@ -175,7 +196,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 345.0, 15.0, 69.0, 17.0 ],
+					"patching_rect" : [ 345.0, 37.0, 69.0, 17.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 0.0, 45.0, 17.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
@@ -227,7 +248,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 555.0, 45.0, 24.0, 24.0 ]
+					"patching_rect" : [ 555.0, 45.0, 24.0, 24.0 ],
+					"varname" : "button[1]"
 				}
 
 			}
@@ -286,7 +308,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 420.0, 165.0, 24.0, 24.0 ]
+					"patching_rect" : [ 420.0, 165.0, 24.0, 24.0 ],
+					"varname" : "button"
 				}
 
 			}
@@ -348,6 +371,18 @@
 						"style" : "",
 						"subpatcher_template" : "snap_to_grid",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 75.0, 60.0, 58.0, 22.0 ],
+									"text" : "loadbang"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-17",
 									"maxclass" : "newobj",
@@ -475,6 +510,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-14", 0 ],
 									"source" : [ "obj-17", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"source" : [ "obj-2", 0 ]
 								}
 
 							}

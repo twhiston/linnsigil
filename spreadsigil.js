@@ -1,7 +1,9 @@
 var q = new Dict("queryState");
 var ca = new Dict("chromaticArray");
 
-var deadNum = 7; // or 0 to return to default
+// the value needed for the "off" LED command
+// must correspond to the index of the data stored in coll lightRGB.txt
+var deadNum = 7;
 
 function _getChromaticOffset(r, rowOffset){
 	return (8 -r ) * rowOffset
@@ -73,12 +75,20 @@ function process(rowOffset, singleOctave){
 
 }
 
-function clear(){
-	
+function clear(){	
+	setAll(deadNum)	
+}
+
+function reset(){	
+	setAll(0)	
+}
+
+function setAll(index)
+{
 	for ( var r = 8; r > 0; r-- )
 	{
 		for (var c = 1; c < 26; c++ ) {
-			outlet(0, c+" "+r+" "+deadNum)
+			outlet(0, c+" "+r+" "+index)
 		}	
 	}
 	
