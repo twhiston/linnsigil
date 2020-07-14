@@ -6,7 +6,7 @@ var ca = new Dict("chromaticArray");
 var deadNum = 7;
 
 function _getChromaticOffset(r, rowOffset){
-	return (8 -r ) * rowOffset
+	return (8 - r) * rowOffset
 }
 
 
@@ -62,17 +62,31 @@ function process(rowOffset, singleOctave){
 	for ( var r = 8; r > 0; r-- )
 	{
 		var chromaticOffset = _getChromaticOffset(r, rowOffset)
-		post("chromaticOffset: "+chromaticOffset)
+		//post("chromaticOffset: "+chromaticOffset)
 		for (var c = 1; c < 26; c++ ) {
 			var chromaticIndex = chromaticOffset + c
-			post("chromaticIndex: "+chromaticIndex)
+			//post("chromaticIndex: "+chromaticIndex)
 			var moduloIndex = ((chromaticIndex - 1) % (12*oSpan)) + 1
-			post("moduloindex: "+moduloIndex+"\n")
+			//post("moduloindex: "+moduloIndex+"\n")
 			var lightVal = ca.get("octave::"+moduloIndex)
 			outlet(0, c+" "+r+" "+lightVal)
 		}	
 	}
 
+}
+
+function lightCurrent(rowOffset){
+		
+	//Iterate each row and get all the values
+	for ( var r = 8; r > 0; r-- )
+	{
+		// calculate row offset
+		var chromaticOffset = _getChromaticOffset(r, rowOffset)
+		for (var c = 1; c < 26; c++ ){
+			var data = q.get(r+"::"+c)
+			outlet(0, c+" "+r+" "+data)
+		}
+	}
 }
 
 function clear(){	
